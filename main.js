@@ -18,10 +18,10 @@ const gloss = new Image();
 
 // Layer configuration
 const layerList = [
-    { image: background, src: './images/layer_1_1.png', zIndex: -5, position: { x: 0, y: 0 }, blend: 0, opacity: 1 },
-    { image: didot, src: './images/layer_2_1.png', zIndex: -4, position: { x: 0, y: 0 }, blend: 0, opacity: 1 },
-    { image: shadow, src: './images/layer_3_1.png', zIndex: -3, position: { x: 0, y: 0 }, blend: 'multiply', opacity: 0.5 },
-    { image: man, src: './images/layer_4_1.png', zIndex: -2, position: { x: 0, y: 0 }, blend: 0, opacity: 1 },
+    { image: background, src: './images/layer_1_1.png', zIndex: -3.5, position: { x: 0, y: 0 }, blend: 0, opacity: 1 },
+    { image: didot, src: './images/layer_2_1.png', zIndex: -2.75, position: { x: 0, y: 0 }, blend: 0, opacity: 1 },
+    { image: shadow, src: './images/layer_3_1.png', zIndex: -2, position: { x: 0, y: 0 }, blend: 'multiply', opacity: 0.5 },
+    { image: man, src: './images/layer_4_1.png', zIndex: -1.65, position: { x: 0, y: 0 }, blend: 0, opacity: 1 },
     { image: headlines, src: './images/layer_5_1.png', zIndex: -0.5, position: { x: 0, y: 0 }, blend: 0, opacity: 1 },
     { image: title, src: './images/layer_6_1.png', zIndex: -0.5, position: { x: 0, y: 0 }, blend: 0, opacity: 1 },
     { image: frame, src: './images/layer_7_1.png', zIndex: 0, position: { x: 0, y: 0 }, blend: 0, opacity: 1 },
