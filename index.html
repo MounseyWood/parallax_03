@@ -4,136 +4,39 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>2D + 3D Parallax Scene</title>
+  <link rel="stylesheet" href="styles.css">
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-  <style>
-    body {
-      margin: 0;
-      overflow: hidden;
-      height: 100vh;
-      width: 100vw;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      perspective: 1000px;
-      background-color: #000;
-    }
-
-    #scene {
-      position: relative;
-      width: 100%;
-      height: 100%;
-    }
-
-    .layer {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      transform-origin: center;
-      transform-style: preserve-3d;
-    }
-
-    #layer-1 {
-      background: url('./images/layer_1_background.jpg') no-repeat center center / cover;
-      z-index: 1;
-    }
-
-    #layer-2, #layer-4, #layer-5 {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: Arial, sans-serif;
-      font-weight: bold;
-      text-align: center;
-      color: white;
-    }
-
-    #layer-2 {
-      font-size: 4rem;
-      z-index: 2;
-    }
-
-    #layer-3 {
-      z-index: 3;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    #layer-4 {
-      font-size: 2rem;
-      z-index: 4;
-    }
-
-    #layer-5 {
-      font-size: 1.5rem;
-      z-index: 5;
-    }
-
-    model-viewer {
-      width: 40%;
-      height: auto;
-    }
-  </style>
 </head>
 <body>
-  <div id="scene">
+  <div class="parallax-container">
     <!-- Layer 1: Background -->
     <div id="layer-1" class="layer"></div>
 
     <!-- Layer 2: Title Text -->
-    <div id="layer-2" class="layer">Main Title</div>
+    <div id="layer-2" class="layer">
+      <h1>Main Title</h1>
+    </div>
 
     <!-- Layer 3: 3D Model -->
     <div id="layer-3" class="layer">
-      <model-viewer 
-        src="./model.glb"
-        ios-src="./model.usdz"
-        alt="A 3D model"
-        ar 
-        ar-modes="webxr scene-viewer quick-look"
-        environment-image="./Studio_MediumContrast.hdr"
-        shadow-intensity="1"
-        exposure="1.65"
-        auto-rotate 
-        camera-controls>
+      <model-viewer
+        src="path-to-your-model.glb"
+        auto-rotate
+        camera-controls
+        style="width: 50%; height: auto;">
       </model-viewer>
     </div>
 
-    <!-- Layer 4: Supporting Text -->
-    <div id="layer-4" class="layer">Supporting Text</div>
+    <!-- Layer 4: Text -->
+    <div id="layer-4" class="layer">
+      <p>Subtitle or Supporting Text</p>
+    </div>
 
     <!-- Layer 5: Additional Text -->
-    <div id="layer-5" class="layer">Additional Text</div>
+    <div id="layer-5" class="layer">
+      <p>Additional Information</p>
+    </div>
   </div>
-
-  <script>
-    const layers = document.querySelectorAll('.layer');
-    let pointer = { x: 0, y: 0 };
-    let motion = { x: 0, y: 0 };
-
-    function updateParallaxEffect() {
-      layers.forEach((layer, index) => {
-        const depth = index * 10; // Adjust depth multiplier
-        const offsetX = (pointer.x + motion.x) * depth * 0.1;
-        const offsetY = (pointer.y + motion.y) * depth * 0.1;
-        layer.style.transform = `translate3d(${offsetX}px, ${offsetY}px, 0px)`;
-      });
-    }
-
-    function handlePointerMove(event) {
-      pointer.x = (event.clientX / window.innerWidth - 0.5) * 2;
-      pointer.y = (event.clientY / window.innerHeight - 0.5) * 2;
-      updateParallaxEffect();
-    }
-
-    function handleDeviceMotion(event) {
-      motion.x = (event.gamma || 0) / 90; // Normalize motion range
-      motion.y = (event.beta || 0) / 90;
-      updateParallaxEffect();
-    }
-
-    window.addEventListener('mousemove', handlePointerMove);
-    window.addEventListener('deviceorientation', handleDeviceMotion);
-  </script>
+  <script src="main.js"></script>
 </body>
 </html>
