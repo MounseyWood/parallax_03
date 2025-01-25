@@ -1,45 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>2D + 3D Parallax Scene</title>
-  <link rel="stylesheet" href="styles.css">
-  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-</head>
-<body>
-  <div class="parallax-container">
-    <!-- Layer 1: Background -->
-    <div id="layer-1" class="layer">
-      <src="./layer-1.png">
-    </div>
-
-    <!-- Layer 2: Title Text -->
-    <div id="layer-2" class="layer">
-      <h1>Main Title</h1>
-    </div>
-
-    <!-- Layer 3: 3D Model -->
-    <div id="layer-3" class="layer">
-      <model-viewer
-        src="./model.glb"
-        ios-src="./modelz.usdz"
-        auto-rotate
-        camera-controls
-        style="width: 50%; height: auto;">
-      </model-viewer>
-    </div>
-
-    <!-- Layer 4: Text -->
-    <div id="layer-4" class="layer">
-      <p>Subtitle or Supporting Text</p>
-    </div>
-
-    <!-- Layer 5: Additional Text -->
-    <div id="layer-5" class="layer">
-      <p>Additional Information</p>
-    </div>
-  </div>
-  <script src="main.js"></script>
-</body>
+<html>
+	<head>
+		<title>Parallax</title>
+		<link rel="stylesheet" type="text/css" href="./styles.css"/>
+		<meta name="author" content="Matthew Mounsey-Wood">
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	</head>
+	<body>
+		<div class="image-container">
+			<canvas class="canvas" width="900" height="1179" id="canvas"></canvas>
+			<div class="loading-screen" id="loading">Loading...</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="./main.js"></script>
 </html>
