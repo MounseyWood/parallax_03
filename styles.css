@@ -1,76 +1,81 @@
-/* General styles */
-body {
-    margin: 0;
-    overflow: hidden;
-    font-family: Arial, sans-serif;
-    color: white;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Parallax Effect</title>
+    <style>
+        html,
+        body {
+            box-sizing: border-box;
+            margin: 0;
+            height: 100%;
+            background: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: sans-serif;
+            overflow: hidden; /* Add this */
+            touch-action: none; /* Add this */
+        }
 
-/* Container for the parallax layers */
-.parallax-container {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-    perspective: 1px;
-}
+        .image-container {
+            display: flex;
+            height: 100%;
+            width: 100%;
+            max-width: 100%;
+            position: relative;
+        }
 
-/* Parallax layers */
-.parallax-layer {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    transform-style: preserve-3d;
-    will-change: transform;
-}
+        .canvas {
+            width: auto;
+            max-height: 100%;
+            max-width: 100%;
+            display: block;
+            margin: auto;
+            transform-style: preserve-3d; /* Add this */
+            will-change: transform; /* Add this */
+            touch-action: none; /* Add this */
+            -webkit-touch-callout: none; /* Add this */
+            -webkit-user-select: none; /* Add this */
+            user-select: none; /* Add this */
+        }
 
-/* Layer styles */
-.layer-1_1 {
-    background: url('layer-1.png') center/cover no-repeat;
-    transform: translateZ(-1px) scale(2);
-    animation: zoomInOut 10s ease-in-out infinite; /* New animation added */
-}
+        .loading-screen {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: white;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            visibility: visible;
+            opacity: 1;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            line-height: 40px;
+            transition: 0.25s ease all 0.75s;
+            color: #999;
+            transform: translateZ(50px);
+            z-index: 1000; /* Add this */
+        }
 
-.layer-2 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 4rem;
-    transform: translateZ(0px);
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-}
-
-.layer-3 {
-    transform: translateZ(1px) scale(0.8);
-}
-
-.layer-4 {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    font-size: 2rem;
-    transform: translateZ(2px) scale(0.6);
-}
-
-.layer-5 {
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    font-size: 1.5rem;
-    transform: translateZ(3px) scale(0.4);
-}
-
-/* Keyframes for zoom animation */
-@keyframes zoomInOut {
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.1); /* Zoom in slightly */
-    }
-    100% {
-        transform: scale(1); /* Zoom back to normal */
-    }
-}
+        .loading-screen.hidden {
+            visibility: hidden;
+            opacity: 0;
+            pointer-events: none; /* Add this */
+        }
+    </style>
+</head>
+<body>
+    <div class="image-container">
+        <div id="loading" class="loading-screen">Loading...</div>
+        <canvas id="canvas" class="canvas"></canvas>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
